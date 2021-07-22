@@ -1,19 +1,13 @@
-const initialState = {
-	todos: [
-		{ id: 0, text: 'Learn React', completed: true },
-		{ id: 1, text: 'Learn Redux', completed: false, color: 'purple' },
-		{ id: 2, text: 'Build something fun!', completed: false, color: 'blue' }
-	],
-	filters: {
-		status: 'All',
-		colors: []
-	}
-}
+import todosReducer from './features/todos/todosSlice'
+import filtersReducer from './features/filters/filtersSlice'
 
-// Use the initialState as a default value
-export default function appReducer(state = initialState, action)
+export default function rootReducer(state = {}, action)
 {
-	// If this reducer doesn't recognize the action type, or doesn't
-	// care about this specific action, return the existing state unchanged
-	return state
+	// always return a new object for the root state
+	return {
+		// the value of `state.todos` is whatever the todos reducer returns
+		todos: todosReducer(state.todos, action),
+		// For both reducers, we only pass in their slice of the state
+		filters: filtersReducer(state.filters, action)
+	}
 }

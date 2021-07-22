@@ -1,20 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Example() {
+	const [count, setCount] = useState(0);
+	// Similar to componentDidMount and componentDidUpdate:
+	useEffect(() => {
+		// Update the document title using the browser API
+		document.title = `You clicked ${count} times`;
+	});
 
-	const [count1, setCount1] = useState(0);
-	const [count2, setCount2] = useState(0);
 	return (
 		<div>
-			<p>Counter1: You clicked {count1} times</p>
-			<button onClick={() => setCount1(count1 + 1)}>
-				Click me
-			</button>
-			<p>Counter2: You clicked {count2} times</p>
-			<button onClick={() => setCount2(count2 + 1)}>
+			<p>Counter1: You clicked {count} times</p>
+			<button onClick={() => setCount(count + 1)}>
 				Click me
 			</button>
 		</div>
 	);
-
 }

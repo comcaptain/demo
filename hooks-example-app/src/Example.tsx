@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 
-export default function Example() {
+
+function useCounter(initialCount: number): [number, React.Dispatch<React.SetStateAction<number>>] {
 	const [count, setCount] = useState(0);
-	// Similar to componentDidMount and componentDidUpdate:
 	useEffect(() => {
-		// Update the document title using the browser API
 		document.title = `You clicked ${count} times`;
 	});
+	return [count, setCount];
+}
+
+export default function Example() {
+	const [count, setCount] = useCounter(0);
 
 	return (
 		<div>

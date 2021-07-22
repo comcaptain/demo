@@ -1,6 +1,16 @@
 import { createStore } from 'redux'
 import rootReducer from './reducer'
 
-const store = createStore(rootReducer)
+let preloadedState
+const persistedTodosString = localStorage.getItem('todos')
 
-export default store
+if (persistedTodosString)
+{
+	preloadedState = {
+		todos: JSON.parse(persistedTodosString)
+	}
+}
+
+const store = createStore(rootReducer, preloadedState)
+
+export default store;

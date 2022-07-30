@@ -1,12 +1,11 @@
-import React from 'react';
 import './App.scss';
-import BasicDemo from './demo/BasicDemo';
+import WrappedFieldsDemo from './demo/WrappedFieldsDemo';
 
 function App()
 {
 	return (
 		<div className="App">
-			<BasicDemo />
+			<WrappedFieldsDemo />
 		</div>
 	);
 }

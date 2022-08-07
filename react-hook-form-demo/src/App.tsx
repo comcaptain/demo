@@ -1,11 +1,11 @@
 import './App.scss';
-import WrappedFieldsDemo from './demo/WrappedFieldsDemo';
+import MaterialUIDemo from './demo/MaterialUIDemo';
 
 function App()
 {
 	return (
 		<div className="App">
-			<WrappedFieldsDemo />
+			<MaterialUIDemo />
 		</div>
 	);
 }

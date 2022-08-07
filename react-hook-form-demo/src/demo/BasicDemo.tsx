@@ -13,7 +13,7 @@ interface Person
 
 export default function BasicDemo()
 {
-	const { register, handleSubmit } = useForm<Person>({defaultValues: {name: "Tony", isMale: true, nationality: "China"}});
+	const { register, handleSubmit } = useForm<Person>({ defaultValues: { name: "Tony", isMale: true, nationality: "China" } });
 	return <form onSubmit={handleSubmit(formValues => console.log("Submit values", formValues))} id="basic-demo-form">
 		<div className="form-item">Name: <input {...register("name",)} /></div>
 		<div className="form-item"><label><input type="checkbox" {...register("isMale")} /> Is Male</label></div>

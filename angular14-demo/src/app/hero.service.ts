@@ -48,6 +48,23 @@ export class HeroService
 			catchError(this.handleError(`updateHero id=${hero.id}`))
 		)
 	}
+	addHero(hero: Hero): Observable<Hero>
+	{
+		return this.http.post<Hero>("/api/heroes", hero, {
+			headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+		}).pipe(
+			tap(_ => this.log(`created new hero ${hero.name}`)),
+			catchError(this.handleError<Hero>(`addHero id=${hero.id}`))
+		)
+	}
+deleteHero(id: number): Observable<Hero>
+{
+	return this.http.delete<Hero>(`/api/heroes/${id}`, {
+		headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+	}).pipe(
+		tap(_ => this.log(`deleted hero id=${id}`)),
+		catchError(this.handleError<Hero>(`deleteHero id=${id}`)))
+}
 
 	private log(message: string)
 	{
